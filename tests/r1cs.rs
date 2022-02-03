@@ -156,7 +156,7 @@ fn kshuffle_helper(k: usize) {
         let mut rng = rand::thread_rng();
         let (min, max) = (0u64, std::u64::MAX);
         let input: Vec<Scalar> = (0..k)
-            .map(|_| Scalar::from(rng.gen_range(min, max)))
+            .map(|_| Scalar::from(rng.gen_range(min..max)))
             .collect();
         let mut output = input.clone();
         output.shuffle(&mut rand::thread_rng());
