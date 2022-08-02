@@ -32,7 +32,7 @@ mod transcript;
 
 pub use crate::errors::ProofError;
 pub use crate::generators::{BulletproofGens, BulletproofGensShare, PedersenGens};
-pub use crate::inner_product_proof::InnerProductProof;
+pub use crate::inner_product_proof::{InnerProductProof, inner_product};
 pub use crate::range_proof::RangeProof;
 
 #[cfg_attr(feature = "docs", doc(include = "../docs/aggregation-api.md"))]
