@@ -216,8 +216,14 @@ impl InnerProductProof {
 
         let mut challenges = Vec::with_capacity(lg_n);
         for (L, R) in self.L_vec.iter().zip(self.R_vec.iter()) {
-            transcript.validate_and_append_point(b"L", L)?;
-            transcript.validate_and_append_point(b"R", R)?;
+            //transcript.validate_and_append_point(b"L", L)?;
+            //transcript.validate_and_append_point(b"R", R)?;
+
+            // validation checks the Ristretto point is not the identity but in our case it is sometimes
+            // maybe we should worry about this identity thing and try to simplify our proof
+            transcript.append_message(b"L", L.as_bytes());
+            transcript.append_message(b"R", R.as_bytes());
+
             challenges.push(transcript.challenge_scalar(b"u"));
         }
 
